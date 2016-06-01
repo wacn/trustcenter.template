@@ -3,11 +3,15 @@
 /* CSS web fonts, font-family, font-style, font-weight, etc. */
 
 html, body {
-    font-family: "Segoe UI","Segeo WP",Tahoma,Arial,"Helvetica Neue",Helvetica,sans-serif;
+    font-family: wf_segoe-ui_normal,"Segoe UI","Segeo WP",Tahoma,Arial,"Helvetica Neue",Helvetica,sans-serif;
 }
 
 code, kbd, pre, samp {
     font-family: Consolas,Menlo,Monaco,"Lucida Console","Liberation Mono","DejaVu Sans Mono","Bitstream Vera Sans Mono","Courier New",monospace,sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: wf_segoe-ui_light,"Segoe UI","Segeo WP",Tahoma,Arial,"Helvetica Neue",Helvetica,sans-serif;
 }
 
 @font-face {
@@ -31,16 +35,13 @@ code, kbd, pre, samp {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/*
-disable web fonts temporarily for the following reasons:
-1. current monolithic CSS approach would block page content rendering until the web fonts get loaded, it's a huge experience downside for slow networks
-2. the web font implementation is problematic - either we get rid of web fonts or we use delay loading, or improving the font CDN speed and use prefetch (instead of 3 hops loading: HTML -> CSS -> font)
-3. font usage is inconsistent, we'll first make it consistent and well organized, before piling up features
-
 @font-face {
     font-family: 'wf_segoe-ui_normal';
     src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.eot");
-    src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.eot?#iefix") format("embedded-opentype"),url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.woff") format("woff"),url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.ttf") format("truetype"),url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.svg#web") format("svg");
+    src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.eot?#iefix") format("embedded-opentype"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.woff") format("woff"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.ttf") format("truetype"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.svg#web") format("svg");
     font-weight: normal;
     font-style: normal
 }
@@ -48,7 +49,10 @@ disable web fonts temporarily for the following reasons:
 @font-face {
     font-family: 'wf_segoe-ui_light';
     src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.eot");
-    src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.eot?#iefix") format("embedded-opentype"),url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.woff") format("woff"),url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.ttf") format("truetype"),url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.svg#web") format("svg");
+    src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.eot?#iefix") format("embedded-opentype"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.woff") format("woff"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.ttf") format("truetype"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.svg#web") format("svg");
     font-weight: normal;
     font-style: normal
 }
@@ -64,7 +68,6 @@ disable web fonts temporarily for the following reasons:
         src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.svg") format("svg")
     }
 }
-*/
 
 div.button a, div.step-by-step a {
     position: relative;
@@ -77,12 +80,12 @@ div.button a, div.step-by-step a {
     padding: 0.2em 0.7em;
     border-radius: 2px;
     border: 0;
-    background-color: #00a4f3;
+    background-color: #007bb8;
     color: #fcfcfc
 }
 
 .theme-night div.button a, .theme-night div.step-by-step a {
-    background-color: #00a4f3;
+    background-color: #007bb8;
     color: #1a1a1a
 }
 
@@ -91,9 +94,12 @@ div.button a, div.step-by-step a {
     color: #ff2600
 }
 
+div.button a:focus, div.step-by-step a:focus {
+    background-color: #0070a7;
+    color: #f5f5f5
+}
+
 div.button a:hover, div.step-by-step a:hover {
-    -webkit-transform: translateY(1px);
-    transform: translateY(1px);
     background-color: #0070a7;
     color: #f5f5f5
 }
@@ -109,8 +115,7 @@ div.button a:hover, div.step-by-step a:hover {
 }
 
 div.step-by-step a {
-    margin-left: 0.5em;
-    margin-right: 0.5em;
+    margin: 0.1em 0.5em;
 }
 
 .theme-night div.step-by-step {
@@ -121,9 +126,28 @@ div.step-by-step a {
     border-color: #2e2e2e
 }
 
+div#headerWrapper {
+    height: 96px;
+}
+
+#sub-header ul.headerlink {
+    float:right;
+    height:auto;
+    padding:0em 1em; 
+    font-size: 0.8em;
+    color:black;
+    position: relative;
+    margin: 0;
+}
+
+#sub-header ul.headerlink li {
+    display: inline-block;
+    margin: 0;
+}
+
 /*Override open-feedback ui styles*/
 
-.ofb-container.ofb-child-vote, .ofb-container>.ofb-vote {
+.ofb-container.ofb-child-vote, .ofb-container>.ofb-vote, .ofb-container.ofb-child-thanks {
     height: 44px !important;
 }
 
@@ -134,7 +158,7 @@ div.step-by-step a {
 }
 
 .ofb-container>.ofb-feedback, .ofb-container>.ofb-vote {
-    background-color: #00a4f3 !important;
+    background-color: #007bb8 !important;
 }
 
 .ofb-container>.ofb-vote .ofb-content {
@@ -171,7 +195,7 @@ div.step-by-step a {
 
 .ofb-container > .ofb-thanks {
     height: 44px !important;
-    background-color: #00a4f3 !important;
+    background-color: #007bb8 !important;
 }
 
 .ofb-container>.ofb-thanks .ofb-content {
@@ -190,6 +214,36 @@ div.step-by-step a {
     display: none;
 }
 
+/* Skip link for keyboard navigation */
+
+#skiplink a {
+    position: absolute;
+    left: -10000px;
+    right:auto;
+    top:auto;
+    padding: .4em;
+    background: white;
+    border: #007bb8;
+    border-style: solid;
+    font-size: 0.8em;
+    border-width: 0.1em;
+    margin: 0.4em;
+    opacity: 0;
+    -webkit-transition: opacity 0.2s linear 0.2s;
+    transition: opacity 0.2s linear 0.2s;
+}
+
+#skiplink a:focus {
+    position: absolute;
+    top: 0;
+    left:auto;
+    right: 0;
+    z-index: 1;
+    opacity: 1;
+    -webkit-transition: opacity 0.2s linear 0s;
+    transition: opacity 0.2s linear 0s;
+}
+
 /* Language Picker */
 
 .lang-picker {
@@ -199,7 +253,17 @@ div.step-by-step a {
     line-height: 48px;
     cursor: pointer;
     padding-left: 10px;
-    padding-right: 20px;
+    padding-right: 15px;
+    margin-right: 5px;
+}
+
+.theme-night .lang-picker {
+    color: #ccc;
+}
+
+.theme-night .lang-picker.active {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.05);
 }
 
 .lang-picker > .arrow {
@@ -209,6 +273,10 @@ div.step-by-step a {
     top: 32%;
     margin-left: 4px;
     background: url(../images/dropdown.png) 50% 50% no-repeat;
+}
+
+.theme-night .lang-picker > .arrow {
+    background: url(../images/dropdown-light.png) 50% 50% no-repeat;
 }
 
 .lang-list {
@@ -228,8 +296,19 @@ div.step-by-step a {
     z-index: 230;
 }
 
+.theme-night .lang-list {
+    right: 5px;
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
 .lang-list .active, .lang-picker.active, .lang-picker:hover {
     background-color: #f1f1f1;
+}
+
+.theme-night .lang-list .active, .theme-night .lang-picker.active, .theme-night .lang-picker:hover {
+    border-color: #2e2e2e;
+    background-color: #1a1a1a;
 }
 
 .lang-list ul {
@@ -243,7 +322,16 @@ div.step-by-step a {
     line-height: 20px;
 }
 
+.theme-night .lang-list a {
+    color: #ccc;
+    background-color: #1a1a1a;
+}
+
 .lang-list a.active {
+    color: #007bb8;
+}
+
+.theme-night .lang-list a.active,a:hover {
     color: #00a4f3;
 }
 
@@ -260,6 +348,10 @@ div.step-by-step a {
     font: inherit;
     vertical-align: baseline;
     box-sizing: border-box;
+}
+
+.lang-item a {
+    cursor: pointer;
 }
 
 /** default three-column language list is not visible, util the screen is large then 600px; */
@@ -639,16 +731,22 @@ td, th {
 
 @font-face {
     font-family: 'wf_segoe-ui_normal';
-    src: url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.eot");
-    src: url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.eot?#iefix") format("embedded-opentype"),url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.woff") format("woff"),url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.ttf") format("truetype"),url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.svg#web") format("svg");
+    src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.eot");
+    src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.eot?#iefix") format("embedded-opentype"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.woff") format("woff"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.ttf") format("truetype"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.svg#web") format("svg");
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'wf_segoe-ui_light';
-    src: url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.eot");
-    src: url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.eot?#iefix") format("embedded-opentype"),url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.woff") format("woff"),url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.ttf") format("truetype"),url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.svg#web") format("svg");
+    src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.eot");
+    src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.eot?#iefix") format("embedded-opentype"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.woff") format("woff"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.ttf") format("truetype"),
+         url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.svg#web") format("svg");
     font-weight: normal;
     font-style: normal;
 }
@@ -656,12 +754,12 @@ td, th {
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
     @font-face {
         font-family: "wf_segoe-ui_normal";
-        src: url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.svg") format("svg");
+        src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/normal/latest.svg") format("svg");
     }
 
     @font-face {
         font-family: "wf_segoe-ui_light";
-        src: url("http://i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.svg") format("svg");
+        src: url("//i.s-microsoft.com/fonts/segoe-ui/west-european/light/latest.svg") format("svg");
     }
 }
 
@@ -807,11 +905,11 @@ body {
 
 button, a:link {
     text-decoration: none;
-    color: #00a4f3;
+    color: #007bb8;
 }
 
 .theme-night button, .theme-night a:link {
-    color: #00a4f3;
+    color: #007bb8;
 }
 
 .theme-hot-dog button, .theme-hot-dog a:link {
@@ -819,11 +917,11 @@ button, a:link {
 }
 
 a:visited {
-    color: #00a4f3;
+    color: #007bb8;
 }
 
 .theme-night a:visited {
-    color: #00a4f3;
+    color: #007bb8;
 }
 
 .theme-hot-dog a:visited {
@@ -843,11 +941,11 @@ a:hover {
 }
 
 a:active {
-    color: #00a4f3;
+    color: #007bb8;
 }
 
 .theme-night a:active {
-    color: #00a4f3;
+    color: #007bb8;
 }
 
 .theme-hot-dog a:active {
@@ -865,12 +963,12 @@ button, a.button {
     padding: 0.2em 0.7em;
     border-radius: 2px;
     border: 0;
-    background-color: #00a4f3;
+    background-color: #007bb8;
     color: #fcfcfc;
 }
 
 .theme-night button, .theme-night a.button {
-    background-color: #00a4f3;
+    background-color: #007bb8;
     color: #1a1a1a;
 }
 
@@ -1166,7 +1264,7 @@ body.theme-hot-dog {
     background-color: #ff2600;
 }
 
-#common-nav-placeholder h3 {
+#common-nav-placeholder p.mslogo {
     display: inline-block;
     border: 0;
     margin-top: 0.9em;
@@ -1180,6 +1278,24 @@ body.theme-hot-dog {
     background-size: 100px 23px;
     background-repeat: no-repeat;
     color: transparent;
+}
+
+.theme-night #common-nav-placeholder p.mslogo {
+    background: url(../images/logo-ms.png);
+    background-size: 100px 23px;
+    background-repeat: no-repeat;
+}
+
+.theme-night #common-nav-placeholder p.mslogo::-moz-selection {
+    background: url(../images/logo-ms.png);
+    background-size: 100px 23px;
+    background-repeat: no-repeat;
+}
+
+.theme-night #common-nav-placeholder p.mslogo::selection {
+    background: url(../images/logo-ms.png);
+    background-size: 100px 23px;
+    background-repeat: no-repeat;
 }
 
 #common-nav-placeholder h5 {
@@ -1201,8 +1317,7 @@ body.theme-hot-dog {
 
 #sub-header {
     position: relative;
-    z-index: 100;
-    height: 44px;
+    height: auto;
     clear: both;
     overflow-x: auto;
     min-height: 0.01%;
@@ -1226,11 +1341,10 @@ body.theme-hot-dog {
 .breadcrumbs {
     position: relative;
     height: auto;
-    width: 100%;
+    float:left;
     margin: 0;
     padding: 0 1em 0 1em;
     font-size: 0.8em;
-    white-space: nowrap;
     list-style: none;
 }
 
@@ -1255,7 +1369,7 @@ body.theme-hot-dog {
 }
 
 .breadcrumbs li:last-child {
-    color: gray;
+    color: black;
 }
 
 .theme-night .breadcrumbs li:last-child {
@@ -1299,29 +1413,33 @@ body.theme-hot-dog {
 }
 
 #footer .links li {
-        display: inline-block;
-        padding-left: 0;
-        margin-left: 0.2em;
-        margin-right: 0;
-    }
+    display: inline-block;
+    padding-left: 0;
+    margin-left: 0.2em;
+    margin-right: 0;
+}
 
 #footer .links li:first-child {
-            margin-left: 0;
-        }
+    margin-left: 0;
+}
 
 #footer .links li:last-child {
-            margin-right: 0;
-        }
+    margin-right: 0;
+}
 
 #footer .links li:last-child:after {
-                content: none;
-            }
+    content: none;
+}
 
 #footer .links li:after {
-            margin-left: 0.5em;
-            content: "•";
-            color: #ababab;
-        }
+    margin-left: 0.5em;
+    content: "•";
+    color: #ababab;
+}
+
+#footer .links a {
+    color: #3d88c0;
+}
 
 .theme-night #footer .links li:after {
     color: #6e6e6e;
@@ -1462,11 +1580,14 @@ body.theme-hot-dog {
     }
 
 #hero-content h3 {
-        margin-top: 3em;
-        color: rgba(0,0,0,0.45);
+        color: #717171;
         font-family: wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
         font-size: 0.8em;
         text-align: center;
+    }
+
+#hero-content h3 a {
+        color: #0078b4;
     }
 
 .graph#hero-content:after {
@@ -1538,7 +1659,7 @@ body.theme-hot-dog {
     }
 
 #featured {
-    padding: 4em 1em;
+    padding: 3em 1em;
 }
 
 @media only screen and (min-width: 52.0625em) {
@@ -1583,7 +1704,7 @@ body.theme-hot-dog {
     }
 
 #journeys {
-    padding: 4em 1em;
+    padding: 2em 1em;
     border-top: 1px solid #ebebeb;
     background-color: #f7f7f8;
 }
@@ -1782,12 +1903,12 @@ a.see-more:hover {
 
 a.button-bordered {
     border-radius: 0;
-    border: 2px solid #00a4f3;
+    border: 2px solid #007bb8;
     padding: 0.5em 1em;
     font-size: 1em;
     font-family: wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
     letter-spacing: 0.1em;
-    color: #00a4f3;
+    color: #007bb8;
     background-color: transparent;
 }
 

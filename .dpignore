@@ -1,0 +1,15 @@
+*.liquid
+*.mta.json
+.git
+.localization-config
+*.extension
+.openpublishing.publish.config.json
+
+#ignore .git folder
+${THEMES}/.git/
+
+#ignore .git file
+${THEMES}/.git
+
+#ingore DocPacker folder
+${THEMES}/DocPacker/

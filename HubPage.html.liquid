@@ -6,6 +6,7 @@
     <meta name="ms.pagetype" content="hubpage" />
     <meta name="ms.sitename" content="DOCS" />
     {{ metadata }}
+    {% if page._op_canonicalUrl != null %}<link href="{{ page._op_canonicalUrl }}" rel="canonical">{% endif %}
     <title>{{ page.title }}</title>
     {% style _themes/css/hubpage.css %}
   </head>
@@ -14,7 +15,7 @@
     <div ms.pgarea="body">
       {{ content }}
     </div>
-    {% include footer.html %}
+    <div id="footerWrapper"></div>
     {% js _themes/javascript/hubpage.js %}
   </body>
 </html>

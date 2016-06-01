@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     {{ metadata }}
-    {% if page._op_canonicalUrl != null %}<link href="{{ page._op_canonicalUrl}}" rel="canonical">{% endif %}
+    {% if page._op_canonicalUrl  %}<link href="{{ page._op_canonicalUrl}}" rel="canonical">{% endif %}
     <title>{{ page.title }}</title>
-    {% style _themes/css/94ddc53945b6f3eb405b.restapi.css %}
+    {% style _themes/css/2e5c68953209c99a6d67.restapi.css %}
   </head>
   <body>
 
@@ -14,34 +14,28 @@
 
     <div class="reference">
       <!-- Toc -->
-      <div id="sidebar" class="sidebar reference-toc" ms.cmpgrp="intopic toc">
-          <nav class="sidebar-nav navigation"></nav>
+      <div id="sidebar" class="reference-toc" ms.cmpgrp="intopic toc">
+        <nav class="navigation"></nav>
       </div>
 
-      <!-- Wrap the body to display the footer correctly -->
       <div class="reference-body-outer">
-        <!-- Body -->
+        <!-- Content -->
         <div id="main" class="reference-body" ms.pgarea="body">
+          <div id="menu-bar">
             <nav class="navbar reference-nav">
                 <ul class="navbar-left" ms.cmpgrp="social">
-                  {% if page.source_url != null and page.source_url != blank %}
+                  {% if page.source_url and page.source_url != blank %}
                   <li class="navbar-item">
                     <a href="{{ page.source_url}}" class="button is-primary is-small"><i class="icon icon-code"></i>{% loc view.source %}</a>
                   </li>
                   {% endif %}
-                  <li class="navbar-item dropdown">
+	              <li class="navbar-item">
                     <a href="#" class="button is-primary is-small sharebutton"><i class="icon icon-share"></i>{% loc share %}</a>
-                    <!-- Share menu -->
-                    <div class="dropdown-menu is-pointer share-container">
-                      <a href="" class="dropdown-item share-twitter"><i class="icon icon-twitter"></i>{% loc twitter %}</a>
-                      <a href="" class="dropdown-item share-facebook"><i class="icon icon-facebook"></i>{% loc facebook %}</a>
-                      <!--<a href="" class="dropdown-item share-slack"><i class="icon icon-slack"></i>{% loc slack %}</a>-->
-                    </div>
                   </li>
                 </ul>
                 <div class="navbar-left" ms.cmpgrp="reference menu">
                   <!-- Platform Selector -->
-                  {% if page.platforms != null %}
+                  {% if page.platforms %}
                   <div class="navbar-item">
                     <p class="control is-horizontal">
                       <label for="platform-selector" class="label">{% loc platform %}</label>
@@ -54,7 +48,7 @@
                   </div>
                   {% endif %}
                   <!-- Language Selector -->
-                  {% if page.langs != null %}
+                  {% if page.langs %}
                   <div class="navbar-item">
                     <p id="menu-lang" class="control is-horizontal">
                       <label for="lang-selector" class="label">{% loc language %}</label>
@@ -78,16 +72,38 @@
                   </div>
                 </div>
               </nav>
-              <!-- Content -->
+          </div>
+	        <div id="menu-expand">
+	          <h6>
+	             <h6><span id="menu-expand-icon">+ </span>Options</h6>
+	          </h6>
+	        </div>
+	        <div id="menu-nav" class="dropdown-container">
+	          <div class="dropdown dropdown-full mobilenavi">
+	            <select>
+	            </select>
+	          </div>
+	        </div>
+          <div class="share-container">
+            <div><a href="" class="share-twitter"><i class="icon icon-twitter"></i>{% loc twitter %}</a></div>
+            <div><a href="" class="share-facebook"><i class="icon icon-facebook"></i>{% loc facebook %}</a></div>
+          </div>
+
               <article id="main-content" class="reference-content">
                   {{ content }}
               </article>
+
+          {% if page.product_feedback_displaytext and page.product_feedback_url %}
+            <div class="product-feedback">
+              <span>{% loc product.feedback %}</span>
+              <a href="{{ page.product_feedback_url }}">{{ page.product_feedback_displaytext }}</a>
         </div>
+          {% endif %}
       </div>
     </div>
-
+    </div>
     <div id="openFeedbackContainer" class="openfeedback-container footer-layout"></div>
-    {% include footer.html %}
-    {% js _themes/javascript/94ddc53945b6f3eb405b.rest.js %}
+    <div id="footerWrapper"></div>
+    {% js _themes/javascript/2e5c68953209c99a6d67.rest.js %}
   </body>
 </html>

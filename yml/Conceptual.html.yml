@@ -3,12 +3,18 @@
   name: Light
 - uid: theme.dark
   name: Dark
+- uid: theme
+  name: Theme
 - uid: comments
   name: Comments
 - uid: edit
   name: Edit
+- uid: editdesc
+  name: Edit This Document
 - uid: share
   name: Share
+- uid: sharedesc
+  name: Share This Document
 - uid: twitter
   name: Twitter
 - uid: facebook
@@ -23,6 +29,8 @@
   name: In this article
 - uid: min.to.read
   name: min to read
+- uid: contributors
+  name: Contributors
 - uid: product.feedback
   name: To submit product feedback, please visit
 ...
