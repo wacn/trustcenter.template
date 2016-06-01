@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {{ metadata }}
+    {% if page._op_canonicalUrl != null %}<link href="{{ page._op_canonicalUrl}}" rel="canonical">{% endif %}
+    <title>{{ page.title }}</title>
+    {% style _themes/css/94ddc53945b6f3eb405b.restapi.css %}
+  </head>
+  <body>
+
+    {% include header.html %}
+
+    <div class="reference">
+      <!-- Toc -->
+      <div id="sidebar" class="sidebar reference-toc" ms.cmpgrp="intopic toc">
+          <nav class="sidebar-nav navigation"></nav>
+      </div>
+
+      <!-- Wrap the body to display the footer correctly -->
+      <div class="reference-body-outer">
+        <!-- Body -->
+        <div id="main" class="reference-body" ms.pgarea="body">
+            <nav class="navbar reference-nav">
+                <ul class="navbar-left" ms.cmpgrp="social">
+                  {% if page.source_url != null and page.source_url != blank %}
+                  <li class="navbar-item">
+                    <a href="{{ page.source_url}}" class="button is-primary is-small"><i class="icon icon-code"></i>{% loc view.source %}</a>
+                  </li>
+                  {% endif %}
+                  <li class="navbar-item dropdown">
+                    <a href="#" class="button is-primary is-small sharebutton"><i class="icon icon-share"></i>{% loc share %}</a>
+                    <!-- Share menu -->
+                    <div class="dropdown-menu is-pointer share-container">
+                      <a href="" class="dropdown-item share-twitter"><i class="icon icon-twitter"></i>{% loc twitter %}</a>
+                      <a href="" class="dropdown-item share-facebook"><i class="icon icon-facebook"></i>{% loc facebook %}</a>
+                      <!--<a href="" class="dropdown-item share-slack"><i class="icon icon-slack"></i>{% loc slack %}</a>-->
+                    </div>
+                  </li>
+                </ul>
+                <div class="navbar-left" ms.cmpgrp="reference menu">
+                  <!-- Platform Selector -->
+                  {% if page.platforms != null %}
+                  <div class="navbar-item">
+                    <p class="control is-horizontal">
+                      <label for="platform-selector" class="label">{% loc platform %}</label>
+                      <select name="platform-selector" id="platform-selector">
+                      {% for platform in page.platforms %}
+                        <option value="platform-{{ platform }}">{{ platform }}</option>
+                      {% endfor %}
+                      </select>
+                    </p>
+                  </div>
+                  {% endif %}
+                  <!-- Language Selector -->
+                  {% if page.langs != null %}
+                  <div class="navbar-item">
+                    <p id="menu-lang" class="control is-horizontal">
+                      <label for="lang-selector" class="label">{% loc language %}</label>
+                      <select name="lang-selector" id="lang-selector">
+                      {% for lang in page.langs %}
+                        <option value="lang-{{ lang }}">{{ lang }}</option>
+                      {% endfor %}
+                      </select>
+                    </p>
+                  </div>
+                  {% endif %}
+                  <!-- Theme Selector -->
+                  <div class="navbar-item">
+                    <p id="menu-theme" class="control is-horizontal">
+                      <label for="theme-selector" class="label">{% loc theme %}</label>
+                      <select name="theme-selector" id="theme-selector">
+                        <option value="">{% loc theme.light %}</option>
+                        <option value="theme-night">{% loc theme.dark %}</option>
+                      </select>
+                    </p>
+                  </div>
+                </div>
+              </nav>
+              <!-- Content -->
+              <article id="main-content" class="reference-content">
+                  {{ content }}
+              </article>
+        </div>
+      </div>
+    </div>
+
+    <div id="openFeedbackContainer" class="openfeedback-container footer-layout"></div>
+    {% include footer.html %}
+    {% js _themes/javascript/94ddc53945b6f3eb405b.rest.js %}
+  </body>
+</html>
