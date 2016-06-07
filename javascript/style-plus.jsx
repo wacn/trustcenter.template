@@ -1,4 +1,6 @@
- $(".content-faq-footer").hide();
- $(".content-faq label").click(function(){
-     $(this).siblings().slideToggle();
+ $(function(){
+     $(".content-faq-footer").hide();
+     $(".content-faq label").click(function(){
+         $(this).siblings().slideToggle();
+     });
  });
